@@ -4,9 +4,9 @@ import driver.BrowserFactory;
 import driver.listeners.WebDriverEventListenerRegistrar;
 import org.openqa.selenium.WebDriver;
 
-import static configuration.TestRunProperties.getBrowserToRun;
-import static configuration.TestRunProperties.getIsRemoteRun;
-import static driver.BrowserType.FIREFOX;
+//import static configuration.TestRunProperties.getBrowserToRun;
+//import static configuration.TestRunProperties.getIsRemoteRun;
+//import static driver.BrowserType.FIREFOX;
 
 public class DriverManager {
 
@@ -18,13 +18,19 @@ public class DriverManager {
     public static WebDriver getWebDriver() {
 
         if (driver == null) {
-            driver = new BrowserFactory(getBrowserToRun(), getIsRemoteRun()).getBrowser();           
+            driver = new BrowserFactory().getBrowser();           
             driver = WebDriverEventListenerRegistrar.registerWebDriverEventListener(driver);
         }
 
         return driver;
     }
 
+	public static void disposeDriver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+    /*
     public static void disposeDriver() {
         driver.close();
         if (!getBrowserToRun().equals(FIREFOX)) {
@@ -32,4 +38,6 @@ public class DriverManager {
         }
         driver = null;
     }
+    
+    */
 }
